@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' blob:; media-src blob:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>WhatsApp Chat Viewer - private, offline</title>
+<meta name="description" content="Open a WhatsApp exported chat in your browser. Search it, see who talks most, and browse photos. Nothing is uploaded.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>WhatsApp Chat Viewer</h1>
+  <p class="sub">Read, search and analyse an exported chat. Everything stays on your device: nothing is uploaded.</p>
+</header>
+<main>
+  <section id="drop" class="card">
+    <label class="pick">
+      <input id="file" type="file" accept=".txt,.zip,text/plain,application/zip">
+      <strong>Choose the exported chat</strong> (.txt or .zip) or drop it here
+    </label>
+    <details>
+      <summary>How do I export a chat?</summary>
+      <p>In WhatsApp open the chat, tap the name at the top, then <b>Export chat</b>. Choose <b>Without media</b> for a small .txt file or <b>Include media</b> for a .zip with photos. Save it to your phone and pick it here.</p>
+    </details>
+    <p id="err" class="err" role="alert" hidden></p>
+  </section>
+
+  <section id="view" hidden>
+    <div class="card bar">
+      <input id="q" type="search" placeholder="Search messages" aria-label="Search messages">
+      <select id="who" aria-label="Filter by sender"><option value="">Everyone</option></select>
+      <input id="from" type="date" aria-label="From date">
+      <input id="to" type="date" aria-label="To date">
+      <select id="order" aria-label="Date format" hidden>
+        <option value="DMY">Day / Month</option><option value="MDY">Month / Day</option>
+      </select>
+    </div>
+    <p id="warn" class="warn" hidden>The dates in this file could be day-first or month-first. Pick the right one above if dates look wrong.</p>
+    <div class="tabs" role="tablist">
+      <button id="t-chat" role="tab" aria-selected="true">Chat</button>
+      <button id="t-stats" role="tab" aria-selected="false">Statistics</button>
+    </div>
+    <div id="chat" class="card">
+      <p id="count" class="muted"></p>
+      <ol id="list"></ol>
+      <button id="more" hidden>Show more</button>
+    </div>
+    <div id="stats" class="card" hidden></div>
+  </section>
+</main>
+<footer>Open source (MIT) &middot; <a href="https://github.com/Bhushansavande/whatsapp-chat-viewer">GitHub</a> &middot; Not affiliated with WhatsApp.</footer>
+<script src="parser.js"></script>
+<script src="stats.js"></script>
+<script src="zip.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

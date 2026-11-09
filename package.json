@@ -1,0 +1,8 @@
+{
+  "name": "whatsapp-chat-viewer",
+  "version": "0.1.0",
+  "description": "Private, offline viewer and statistics for WhatsApp exported chats",
+  "license": "MIT",
+  "private": true,
+  "scripts": { "test": "node --test tests/parser.test.js" }
+}
